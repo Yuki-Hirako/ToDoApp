@@ -26,4 +26,11 @@ module.exports = {
             return res.json({ success: false });
         }
     },
+
+    async destroy(req, res) {
+        const { id } = req.body;
+        await Item.findByIdAndRemove(id, { useFindAndModify: true }, (item) => {
+            return res.json({ success: !item });
+        });
+    },
 };

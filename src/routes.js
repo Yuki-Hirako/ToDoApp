@@ -6,4 +6,6 @@ const routes = Router();
 routes.post("/items/create", ItemController.store);
 routes.get("/items/read", ItemController.index);
 routes.put("/items/update", ItemController.update);
+routes.delete("/items/delete", ItemController.destroy);
+
 module.exports = routes;
