@@ -3,7 +3,7 @@ const ItemController = require("./controllers/ItemController");
 
 const routes = Router();
 
-routes.post("/items", ItemController.store);
-routes.get("/items", ItemController.index);
-
+routes.post("/items/create", ItemController.store);
+routes.get("/items/read", ItemController.index);
+routes.put("/items/update", ItemController.update);
 module.exports = routes;
