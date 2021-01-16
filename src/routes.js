@@ -1,14 +1,11 @@
 const { Router } = require("express");
-const Item = require("./models/Item");
+const ItemController = require("./controllers/ItemController");
 
 const routes = Router();
 
-routes.post("/items", async (req, res) => {
-    const { content } = req.body;
-    const item = await Item.create({
-        content,
-    });
-    return res.json(item);
-});
+routes.post("/items/create", ItemController.store);
+routes.get("/items/read", ItemController.index);
+routes.put("/items/update", ItemController.update);
+routes.delete("/items/delete", ItemController.destroy);
 
 module.exports = routes;
