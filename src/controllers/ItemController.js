@@ -1,3 +1,4 @@
+const { update } = require("../models/Item");
 const Item = require("../models/Item");
 
 module.exports = {
@@ -12,5 +13,17 @@ module.exports = {
             content,
         });
         return res.json(item);
+    },
+
+    async update(req, res) {
+        const { id, newContent } = req.body;
+        const item = await Item.findById(id);
+        if (item) {
+            item.content = newContent;
+            await item.save();
+            return res.json({ success: true });
+        } else {
+            return res.json({ success: false });
+        }
     },
 };
